@@ -1,0 +1,48 @@
+﻿CREATE DATABASE "IngenieriaSoftware"
+  WITH OWNER = postgres
+       ENCODING = 'UTF8'
+       TABLESPACE = pg_default
+       LC_COLLATE = 'es_MX.UTF-8'
+       LC_CTYPE = 'es_MX.UTF-8'
+       CONNECTION LIMIT = -1;
+
+-- Table: registrado
+
+-- DROP TABLE registrado;
+
+CREATE TABLE registrado
+(
+  id_registrado numeric,
+  "correoR" text,
+  contrasena text
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE registrado
+  OWNER TO postgres;
+
+  -- Table: usuario
+
+-- DROP TABLE usuario;
+
+CREATE TABLE usuario
+(
+  "idUsuario" numeric NOT NULL, -- El identificador para cada uno de los usuarios que están en la base de datos
+  "nombreU" text NOT NULL, -- Nombre con el que se identifica el usuario
+  "correoU" text NOT NULL, -- Correo electrónico del usuario
+  CONSTRAINT usuario_pkey PRIMARY KEY ("idUsuario" ),
+  CONSTRAINT "usuario_correoU_key" UNIQUE ("correoU" )
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE usuario
+  OWNER TO postgres;
+COMMENT ON TABLE usuario
+  IS 'Tabla que contiene las propiedades de un usuario';
+COMMENT ON COLUMN usuario."idUsuario" IS 'El identificador para cada uno de los usuarios que están en la base de datos';
+COMMENT ON COLUMN usuario."nombreU" IS 'Nombre con el que se identifica el usuario';
+COMMENT ON COLUMN usuario."correoU" IS 'Correo electrónico del usuario';
+
+
